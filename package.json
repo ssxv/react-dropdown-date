@@ -1,7 +1,7 @@
 {
     "name": "dropdown-date",
-    "version": "0.0.6",
-    "description": "select date from Day, Month and Year dropdown",
+    "version": "0.0.7",
+    "description": "Highly customizable date picker. Select date from Day, Month and Year dropdown",
     "keywords": [
         "dropdown-date",
         "dropdown",
@@ -13,8 +13,9 @@
     "main": "build/index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ssxv/dropdown-date.git"
+        "url": "https://github.com/ssxv/dropdown-date.git"
     },
+    "author": "Satyendra Singh <satyendra1529singh@gmail.com>",
     "peerDependencies": {
         "react": "^16.3.1"
     },
@@ -25,10 +26,6 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "webpack --watch",
         "build": "webpack"
-    },
-    "author": {
-        "name": "Satyendra Singh",
-        "email": "satyendra1529singh@gmail.com"
     },
     "devDependencies": {
         "babel-cli": "^6.24.1",
@@ -42,5 +39,5 @@
     "bugs": {
         "url": "https://github.com/ssxv/dropdown-date/issues"
     },
-    "homepage": "https://github.com/ssxv/dropdown-date#readme"
+    "homepage": "https://github.com/ssxv/dropdown-date"
 }

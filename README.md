@@ -1,5 +1,5 @@
 # dropdown-date
-select date from Day, Month and Year dropdown
+Highly customizable date picker. Select date from Day, Month and Year dropdown
 
 ## npm
 ```npm i dropdown-date```
