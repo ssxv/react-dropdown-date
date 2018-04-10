@@ -2,7 +2,7 @@
 select date from Day, Month and Year dropdown
 
 ## npm
-npm i dropdown-date 
+```npm i dropdown-date```
 https://www.npmjs.com/package/dropdown-date
 
 ## usage
