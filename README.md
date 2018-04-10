@@ -3,6 +3,7 @@ select date from Day, Month and Year dropdown
 
 ## npm
 ```npm i dropdown-date```
+
 https://www.npmjs.com/package/dropdown-date
 
 ## usage
@@ -18,5 +19,5 @@ import Date from 'dropdown-date';
   onDateChange={this.onDateChange}    // optional
 />
 ```
-startDate and endDate format is 'yyyy-mm-dd'
+**startDate and endDate format is 'yyyy-mm-dd'**
 

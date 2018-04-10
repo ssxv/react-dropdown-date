@@ -1,7 +1,15 @@
 {
     "name": "dropdown-date",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "select date from Day, Month and Year dropdown",
+    "keywords": [
+        "dropdown-date",
+        "dropdown",
+        "date",
+        "date-picker",
+        "react",
+        "react-date"
+    ],
     "main": "build/index.js",
     "peerDependencies": {
         "react": "^15.5.4"
