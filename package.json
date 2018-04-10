@@ -1,6 +1,6 @@
 {
     "name": "dropdown-date",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "select date from Day, Month and Year dropdown",
     "keywords": [
         "dropdown-date",
@@ -11,6 +11,10 @@
         "react-date"
     ],
     "main": "build/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ssxv/dropdown-date.git"
+    },
     "peerDependencies": {
         "react": "^15.5.4"
     },
@@ -34,5 +38,9 @@
         "babel-plugin-transform-object-rest-spread": "^6.23.0",
         "babel-plugin-transform-react-jsx": "^6.24.1",
         "babel-preset-env": "^1.5.1"
-    }
+    },
+    "bugs": {
+        "url": "https://github.com/ssxv/dropdown-date/issues"
+    },
+    "homepage": "https://github.com/ssxv/dropdown-date#readme"
 }
