@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { monthByNumber, numberByMonth, daysInMonth, unit } from './helper';
 
 
@@ -55,41 +55,91 @@ class DropdownDate extends React.Component {
         const { startYear, endYear } = this.state;
         const yearOptions = [];
         yearOptions.push(
-            <option key={-1} value=""></option>
+            <option key={-1} value=""
+                className={(this.props.classes && this.props.classes.yearOptions) ? this.props.classes.yearOptions : null}
+            >
+                {(this.props.defaultValues && this.props.defaultValues.year) ? this.props.defaultValues.year : ''}
+            </option>
         );
-        for (let i = startYear; i <= endYear; i++) {
-            yearOptions.push(
-                <option key={i} value={i}>{i}</option>
-            );
+        if (this.props.options && this.props.options.yearReverse) {
+            for (let i = endYear; i >= startYear; i--) {
+                yearOptions.push(
+                    <option key={i} value={i}
+                        className={(this.props.classes && this.props.classes.yearOptions) ? this.props.classes.yearOptions : null}
+                    >{i}</option>
+                );
+            }
+        } else {
+            for (let i = startYear; i <= endYear; i++) {
+                yearOptions.push(
+                    <option key={i} value={i}
+                        className={(this.props.classes && this.props.classes.yearOptions) ? this.props.classes.yearOptions : null}
+                    >{i}</option>
+                );
+            }
         }
         return yearOptions;
     }
 
     generateMonthOptions() {
         const { startMonth, endMonth, startYear, endYear, selectedYear } = this.state;
-        const monthOptions = [];
-        monthOptions.push(
-            <option key={-1} value=""></option>
-        );
+        let months = [];
         if (selectedYear === startYear) {
             for (let i = startMonth; i <= 11; i++) {
-                monthOptions.push(
-                    <option key={i} value={i}>{monthByNumber[i]}</option>
-                );
+                months.push({
+                    value: i,
+                    month: monthByNumber[i]
+                });
             }
         } else if (selectedYear === endYear) {
             for (let i = 0; i <= endMonth; i++) {
-                monthOptions.push(
-                    <option key={i} value={i}>{monthByNumber[i]}</option>
-                );
+                months.push({
+                    value: i,
+                    month: monthByNumber[i]
+                });
             }
         } else {
             for (let i = 0; i <= 11; i++) {
-                monthOptions.push(
-                    <option key={i} value={i}>{monthByNumber[i]}</option>
-                );
+                months.push({
+                    value: i,
+                    month: monthByNumber[i]
+                });
             }
         }
+
+        if (this.props.options && this.props.options.monthShort) {
+            months = months.map((elem) => {
+                return {
+                    value: elem.value,
+                    month: elem.month.substring(0, 3)
+                };
+            });
+        }
+
+        if (this.props.options && this.props.options.monthCaps) {
+            months = months.map((elem) => {
+                return {
+                    value: elem.value,
+                    month: elem.month.toUpperCase()
+                };
+            });
+        }
+
+        const monthOptions = [];
+        monthOptions.push(
+            <option key={-1} value=""
+                className={(this.props.classes && this.props.classes.monthOptions) ? this.props.classes.monthOptions : null}
+            >{(this.props.defaultValues && this.props.defaultValues.month) ? this.props.defaultValues.month : ''}
+            </option>
+        );
+        months.forEach((elem) => {
+            monthOptions.push(
+                <option key={elem.value} value={elem.value}
+                    className={(this.props.classes && this.props.classes.monthOptions) ? this.props.classes.monthOptions : null}
+                >{elem.month}</option>
+            );
+        });
+
         return monthOptions;
     }
 
@@ -97,19 +147,27 @@ class DropdownDate extends React.Component {
         const { startYear, startMonth, startDay, endYear, endMonth, endDay, selectedYear, selectedMonth } = this.state;
         const dayOptions = [];
         dayOptions.push(
-            <option key={-1} value=""></option>
+            <option key={-1} value=""
+                className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
+            >
+                {(this.props.defaultValues && this.props.defaultValues.day) ? this.props.defaultValues.day : ''}
+            </option>
         );
         if (selectedYear === startYear) {
             if (selectedMonth === startMonth) {
                 for (let i = startDay; i <= daysInMonth[selectedMonth]; i++) {
                     dayOptions.push(
-                        <option key={i} value={i}>{i}</option>
+                        <option key={i} value={i}
+                            className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
+                        >{i}</option>
                     );
                 }
             } else {
                 for (let i = 1; i <= daysInMonth[selectedMonth]; i++) {
                     dayOptions.push(
-                        <option key={i} value={i}>{i}</option>
+                        <option key={i} value={i}
+                            className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
+                        >{i}</option>
                     );
                 }
             }
@@ -117,13 +175,17 @@ class DropdownDate extends React.Component {
             if (selectedMonth === endMonth) {
                 for (let i = 1; i <= endDay; i++) {
                     dayOptions.push(
-                        <option key={i} value={i}>{i}</option>
+                        <option key={i} value={i}
+                            className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
+                        >{i}</option>
                     );
                 }
             } else {
                 for (let i = 1; i <= daysInMonth[selectedMonth]; i++) {
                     dayOptions.push(
-                        <option key={i} value={i}>{i}</option>
+                        <option key={i} value={i}
+                            className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
+                        >{i}</option>
                     );
                 }
             }
@@ -131,13 +193,17 @@ class DropdownDate extends React.Component {
             if (selectedMonth) {
                 for (let i = 1; i <= daysInMonth[selectedMonth]; i++) {
                     dayOptions.push(
-                        <option key={i} value={i}>{i}</option>
+                        <option key={i} value={i}
+                            className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
+                        >{i}</option>
                     );
                 }
             } else {
                 for (let i = 1; i <= 31; i++) {
                     dayOptions.push(
-                        <option key={i} value={i}>{i}</option>
+                        <option key={i} value={i}
+                            className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
+                        >{i}</option>
                     );
                 }
             }
@@ -186,17 +252,32 @@ class DropdownDate extends React.Component {
         return (
             <div id="dropdown-date">
                 <div id="dropdown-year">
-                    <select id="select-year" onChange={(e) => this.handleYearChange(e.target.value)}>
+                    <select
+                        id={(this.props.ids && this.props.ids.year) ? this.props.ids.year : null}
+                        name={(this.props.names && this.props.names.year) ? this.props.names.year : null}
+                        className={(this.props.classes && this.props.classes.year) ? this.props.classes.year : null}
+                        onChange={(e) => this.handleYearChange(e.target.value)}
+                    >
                         {this.generateYearOptions()}
                     </select>
                 </div>
                 <div id="dropdown-month">
-                    <select id="select-month" onChange={(e) => this.handleMonthChange(e.target.value)}>
+                    <select
+                        id={(this.props.ids && this.props.ids.month) ? this.props.ids.month : null}
+                        name={(this.props.names && this.props.names.month) ? this.props.names.month : null}
+                        className={(this.props.classes && this.props.classes.month) ? this.props.classes.month : null}
+                        onChange={(e) => this.handleMonthChange(e.target.value)}
+                    >
                         {this.generateMonthOptions()}
                     </select>
                 </div>
                 <div id="dropdown-day">
-                    <select id="select-day" onChange={(e) => this.handleDayChange(e.target.value)}>
+                    <select
+                        id={(this.props.ids && this.props.ids.day) ? this.props.ids.day : null}
+                        name={(this.props.names && this.props.names.day) ? this.props.names.day : null}
+                        className={(this.props.classes && this.props.classes.day) ? this.props.classes.day : null}
+                        onChange={(e) => this.handleDayChange(e.target.value)}
+                    >
                         {this.generateDayOptions()}
                     </select>
                 </div>
