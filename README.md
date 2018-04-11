@@ -1,14 +1,14 @@
-# dropdown-date
-Highly customizable date picker. Select date from Day, Month and Year dropdown
+# react-dropdown-date
+Highly customizable react based date picker. Select date from Day, Month and Year dropdown
 
 ## npm
-```npm i dropdown-date```
+```npm i react-dropdown-date```
 
-https://www.npmjs.com/package/dropdown-date
+https://www.npmjs.com/package/react-dropdown-date
 
 ## usage
 ```
-import Date from 'dropdown-date';
+import Date from 'react-dropdown-date';
 
 <Date
   startDate={                         // optional, if not provided 1900-01-01 is startDate

@@ -1,8 +1,9 @@
 {
-    "name": "dropdown-date",
-    "version": "0.0.7",
-    "description": "Highly customizable date picker. Select date from Day, Month and Year dropdown",
+    "name": "react-dropdown-date",
+    "version": "0.0.8",
+    "description": "Highly customizable react based date picker. Select date from Day, Month and Year dropdown",
     "keywords": [
+        "react-dropdown-date",
         "dropdown-date",
         "dropdown",
         "date",
@@ -13,7 +14,7 @@
     "main": "build/index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/ssxv/dropdown-date.git"
+        "url": "https://github.com/ssxv/react-dropdown-date.git"
     },
     "author": "Satyendra Singh <satyendra1529singh@gmail.com>",
     "peerDependencies": {
@@ -37,7 +38,7 @@
         "webpack": "^2.6.1"
     },
     "bugs": {
-        "url": "https://github.com/ssxv/dropdown-date/issues"
+        "url": "https://github.com/ssxv/react-dropdown-date/issues"
     },
-    "homepage": "https://github.com/ssxv/dropdown-date"
+    "homepage": "https://github.com/ssxv/react-dropdown-date"
 }
