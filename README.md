@@ -6,7 +6,8 @@ Highly customizable react based date picker. Select date from Day, Month and Yea
 
 https://www.npmjs.com/package/react-dropdown-date
 
-## usage
+## `Date` component, with combined functionality
+see further below for individual components
 ```
 import Date from 'react-dropdown-date';
 
@@ -64,10 +65,8 @@ import Date from 'react-dropdown-date';
     }
   }
 />
-
 ```
-
-## HTML Reference for classes
+#### HTML Reference for classes
 ```
 <!-- dateContainer -->
 <div class="classes">
@@ -99,4 +98,85 @@ import Date from 'react-dropdown-date';
       </select>
    </div>
 </div>
+```
+
+
+## Individual Components: `YearPicker`, `MonthPicker`, `DayPicker`
+
+```
+import React, { Component } from 'react';
+
+import { YearPicker, MonthPicker, DayPicker } from 'react-dropdown-date';
+
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { year: null, month: null, day: null };
+	}
+
+	render() {
+		return (
+			<div>
+				<YearPicker
+					defaultValue={'select year'}
+					// default is 1900
+					start={2010}
+					// default is current year
+					end={2020}
+					// default is ASCENDING
+					reverse
+					// mandatory
+					onChange={(year) => {
+						this.setState({ year });
+						console.log(year);
+					}}
+					id={'year'}
+					name={'year'}
+					classes={'classes'}
+					optionClasses={'option classes'}
+				/>
+				<MonthPicker
+					defaultValue={'select month'}
+					// default is full name
+					short
+					// default is Titlecase
+					caps
+					// mandatory if end={} is given in YearPicker
+					endYearGiven
+					// mandatory
+					year={this.state.year}
+					// mandatory
+					onChange={(month) => {
+						this.setState({ month });
+						console.log(month);
+					}}
+					id={'month'}
+					name={'month'}
+					classes={'classes'}
+					optionClasses={'option classes'}
+				/>
+				<DayPicker
+					defaultValue={'select day'}
+					// mandatory
+					year={this.state.year}
+					// mandatory
+					month={this.state.month}
+					// mandatory if end={} is given in YearPicker
+					endYearGiven
+					// mandatory
+					onChange={(day) => {
+						this.setState({ day });
+						console.log(day);
+					}}
+					id={'day'}
+					name={'day'}
+					classes={'classes'}
+					optionClasses={'option classes'}
+				/>
+			</div>
+		);
+	}
+}
+
+export default App;
 ```
