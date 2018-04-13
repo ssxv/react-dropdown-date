@@ -37,6 +37,10 @@ import Date from 'react-dropdown-date';
   }
   classes={                           // optional
     {
+      dateContainer: 'classes',
+      yearContainer: 'classes',
+      monthContainer: 'classes',
+      dayContainer: 'classes',
       year: 'classes classes',
       month: 'classes classes',
       day: 'classes classes',
@@ -63,3 +67,36 @@ import Date from 'react-dropdown-date';
 
 ```
 
+## HTML Reference for classes
+```
+<!-- dateContainer -->
+<div class="classes">
+
+    <!-- yearContainer -->
+   <div class="classes">
+
+      <!-- year -->
+      <select class="classes classes">
+         <option value="" class="classes">select year</option>
+      </select>
+   </div>
+
+   <!-- monthContainer -->
+   <div class="classes">
+      
+      <!-- month -->
+      <select class="classes classes">
+         <option value="" class="classes">select month</option>
+      </select>
+   </div>
+
+   <!-- dayContainer -->
+   <div class="classes">
+
+      <!-- day -->
+      <select class="classes classes">
+         <option value="" class="classes">select day</option>
+      </select>
+   </div>
+</div>
+```

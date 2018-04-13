@@ -153,9 +153,12 @@ class DropdownDate extends React.Component {
                 {(this.props.defaultValues && this.props.defaultValues.day) ? this.props.defaultValues.day : ''}
             </option>
         );
+
+        let monthDays;
         if (selectedYear === startYear) {
             if (selectedMonth === startMonth) {
-                for (let i = startDay; i <= daysInMonth[selectedMonth]; i++) {
+                monthDays = (selectedYear % 4 === 0 && selectedMonth === 1) ? daysInMonth[selectedMonth] + 1 : daysInMonth[selectedMonth];
+                for (let i = startDay; i <= monthDays; i++) {
                     dayOptions.push(
                         <option key={i} value={i}
                             className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
@@ -163,7 +166,8 @@ class DropdownDate extends React.Component {
                     );
                 }
             } else {
-                for (let i = 1; i <= daysInMonth[selectedMonth]; i++) {
+                monthDays = (selectedYear % 4 === 0 && selectedMonth === 1) ? daysInMonth[selectedMonth] + 1 : daysInMonth[selectedMonth];
+                for (let i = 1; i <= monthDays; i++) {
                     dayOptions.push(
                         <option key={i} value={i}
                             className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
@@ -181,7 +185,8 @@ class DropdownDate extends React.Component {
                     );
                 }
             } else {
-                for (let i = 1; i <= daysInMonth[selectedMonth]; i++) {
+                monthDays = (selectedYear % 4 === 0 && selectedMonth === 1) ? daysInMonth[selectedMonth] + 1 : daysInMonth[selectedMonth];
+                for (let i = 1; i <= monthDays; i++) {
                     dayOptions.push(
                         <option key={i} value={i}
                             className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
@@ -191,7 +196,8 @@ class DropdownDate extends React.Component {
             }
         } else {
             if (selectedMonth) {
-                for (let i = 1; i <= daysInMonth[selectedMonth]; i++) {
+                monthDays = (selectedYear % 4 === 0 && selectedMonth === 1) ? daysInMonth[selectedMonth] + 1 : daysInMonth[selectedMonth];
+                for (let i = 1; i <= monthDays; i++) {
                     dayOptions.push(
                         <option key={i} value={i}
                             className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
@@ -250,8 +256,8 @@ class DropdownDate extends React.Component {
 
     render() {
         return (
-            <div id="dropdown-date">
-                <div id="dropdown-year">
+            <div id="dropdown-date" className={(this.props.classes && this.props.classes.dateContainer) ? this.props.classes.dateContainer : null}>
+                <div id="dropdown-year" className={(this.props.classes && this.props.classes.yearContainer) ? this.props.classes.yearContainer : null}>
                     <select
                         id={(this.props.ids && this.props.ids.year) ? this.props.ids.year : null}
                         name={(this.props.names && this.props.names.year) ? this.props.names.year : null}
@@ -261,7 +267,7 @@ class DropdownDate extends React.Component {
                         {this.generateYearOptions()}
                     </select>
                 </div>
-                <div id="dropdown-month">
+                <div id="dropdown-month" className={(this.props.classes && this.props.classes.monthContainer) ? this.props.classes.monthContainer : null}>
                     <select
                         id={(this.props.ids && this.props.ids.month) ? this.props.ids.month : null}
                         name={(this.props.names && this.props.names.month) ? this.props.names.month : null}
@@ -271,7 +277,7 @@ class DropdownDate extends React.Component {
                         {this.generateMonthOptions()}
                     </select>
                 </div>
-                <div id="dropdown-day">
+                <div id="dropdown-day" className={(this.props.classes && this.props.classes.dayContainer) ? this.props.classes.dayContainer : null}>
                     <select
                         id={(this.props.ids && this.props.ids.day) ? this.props.ids.day : null}
                         name={(this.props.names && this.props.names.day) ? this.props.names.day : null}
