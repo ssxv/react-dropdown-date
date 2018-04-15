@@ -126,6 +126,8 @@ class App extends Component {
 					// default is ASCENDING
 					reverse
 					// mandatory
+          value={this.state.year}
+          // mandatory
 					onChange={(year) => {
 						this.setState({ year });
 						console.log(year);
@@ -146,6 +148,8 @@ class App extends Component {
 					// mandatory
 					year={this.state.year}
 					// mandatory
+          value={this.state.month}
+          // mandatory
 					onChange={(month) => {
 						this.setState({ month });
 						console.log(month);
@@ -164,6 +168,8 @@ class App extends Component {
 					// mandatory if end={} is given in YearPicker
 					endYearGiven
 					// mandatory
+          value={this.state.day}
+          // mandatory
 					onChange={(day) => {
 						this.setState({ day });
 						console.log(day);
