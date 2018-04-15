@@ -55,7 +55,7 @@ export class DropdownDate extends React.Component {
         const { startYear, endYear } = this.state;
         const yearOptions = [];
         yearOptions.push(
-            <option key={-1} value=""
+            <option key={-1} value="-1"
                 className={(this.props.classes && this.props.classes.yearOptions) ? this.props.classes.yearOptions : null}
             >
                 {(this.props.defaultValues && this.props.defaultValues.year) ? this.props.defaultValues.year : ''}
@@ -127,7 +127,7 @@ export class DropdownDate extends React.Component {
 
         const monthOptions = [];
         monthOptions.push(
-            <option key={-1} value=""
+            <option key={-1} value="-1"
                 className={(this.props.classes && this.props.classes.monthOptions) ? this.props.classes.monthOptions : null}
             >{(this.props.defaultValues && this.props.defaultValues.month) ? this.props.defaultValues.month : ''}
             </option>
@@ -147,7 +147,7 @@ export class DropdownDate extends React.Component {
         const { startYear, startMonth, startDay, endYear, endMonth, endDay, selectedYear, selectedMonth } = this.state;
         const dayOptions = [];
         dayOptions.push(
-            <option key={-1} value=""
+            <option key={-1} value="-1"
                 className={(this.props.classes && this.props.classes.dayOptions) ? this.props.classes.dayOptions : null}
             >
                 {(this.props.defaultValues && this.props.defaultValues.day) ? this.props.defaultValues.day : ''}
@@ -263,6 +263,7 @@ export class DropdownDate extends React.Component {
                         name={(this.props.names && this.props.names.year) ? this.props.names.year : null}
                         className={(this.props.classes && this.props.classes.year) ? this.props.classes.year : null}
                         onChange={(e) => this.handleYearChange(e.target.value)}
+                        value={this.state.selectedYear}
                     >
                         {this.generateYearOptions()}
                     </select>
@@ -273,6 +274,7 @@ export class DropdownDate extends React.Component {
                         name={(this.props.names && this.props.names.month) ? this.props.names.month : null}
                         className={(this.props.classes && this.props.classes.month) ? this.props.classes.month : null}
                         onChange={(e) => this.handleMonthChange(e.target.value)}
+                        value={this.state.selectedMonth}
                     >
                         {this.generateMonthOptions()}
                     </select>
@@ -283,6 +285,7 @@ export class DropdownDate extends React.Component {
                         name={(this.props.names && this.props.names.day) ? this.props.names.day : null}
                         className={(this.props.classes && this.props.classes.day) ? this.props.classes.day : null}
                         onChange={(e) => this.handleDayChange(e.target.value)}
+                        value={this.state.selectedDay}
                     >
                         {this.generateDayOptions()}
                     </select>
