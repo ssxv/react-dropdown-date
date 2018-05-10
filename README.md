@@ -9,9 +9,9 @@ https://www.npmjs.com/package/react-dropdown-date
 ## `Date` component, with combined functionality
 see further below for individual components
 ```
-import Date from 'react-dropdown-date';
+import DropdownDate from 'react-dropdown-date';
 
-<Date
+<DropdownDate
   startDate={                         // optional, if not provided 1900-01-01 is startDate
     '2012-02-14'                      // 'yyyy-mm-dd' format only
   }
