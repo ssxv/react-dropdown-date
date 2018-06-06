@@ -218,21 +218,21 @@ export class DropdownDate extends React.Component {
     }
 
     handleYearChange(year) {
-        year = Number.parseInt(year);
+        year = parseInt(year);
         this.setState({ selectedYear: year });
         if (this.props.onYearChange) { this.props.onYearChange(year); }
         this.handleDateChange(unit.year, year);
     }
 
     handleMonthChange(month) {
-        month = Number.parseInt(month);
+        month = parseInt(month);
         this.setState({ selectedMonth: month });
         if (this.props.onMonthChange) { this.props.onMonthChange(monthByNumber[month]); }
         this.handleDateChange(unit.month, month);
     }
 
     handleDayChange(day) {
-        day = Number.parseInt(day);
+        day = parseInt(day);
         this.setState({ selectedDay: day });
         if (this.props.onDayChange) { this.props.onDayChange(day); }
         this.handleDateChange(unit.day, day);
