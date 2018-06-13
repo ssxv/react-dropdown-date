@@ -63,7 +63,7 @@ export class MonthPicker extends React.Component {
         let months = [];
         let month = 11;
         if (!this.props.endYearGiven) {
-            if (this.props.year && Number.parseInt(this.props.year) === today.getFullYear()) {
+            if (this.props.year && parseInt(this.props.year) === today.getFullYear()) {
                 month = today.getMonth();
             }
         }
@@ -115,8 +115,8 @@ export class DayPicker extends React.Component {
     }
 
     renderDayOptions() {
-        const month = (this.props.month) ? Number.parseInt(this.props.month) : null;
-        const year = (this.props.year) ? Number.parseInt(this.props.year) : null;
+        const month = (this.props.month) ? parseInt(this.props.month) : null;
+        const year = (this.props.year) ? parseInt(this.props.year) : null;
         let days;
         if (month) {
             if (year && year % 4 === 0 && month === 1) {
