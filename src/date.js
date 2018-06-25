@@ -265,7 +265,7 @@ export class DropdownDate extends React.Component {
 
     renderYear() {
         return (
-            <div id="dropdown-year" className={(this.props.classes && this.props.classes.yearContainer) ? this.props.classes.yearContainer : null}>
+            <div key="year" id="dropdown-year" className={(this.props.classes && this.props.classes.yearContainer) ? this.props.classes.yearContainer : null}>
                 <select
                     id={(this.props.ids && this.props.ids.year) ? this.props.ids.year : null}
                     name={(this.props.names && this.props.names.year) ? this.props.names.year : null}
@@ -281,7 +281,7 @@ export class DropdownDate extends React.Component {
 
     renderMonth() {
         return (
-            <div id="dropdown-month" className={(this.props.classes && this.props.classes.monthContainer) ? this.props.classes.monthContainer : null}>
+            <div key="month" id="dropdown-month" className={(this.props.classes && this.props.classes.monthContainer) ? this.props.classes.monthContainer : null}>
                 <select
                     id={(this.props.ids && this.props.ids.month) ? this.props.ids.month : null}
                     name={(this.props.names && this.props.names.month) ? this.props.names.month : null}
@@ -297,7 +297,7 @@ export class DropdownDate extends React.Component {
 
     renderDay() {
         return (
-            <div id="dropdown-day" className={(this.props.classes && this.props.classes.dayContainer) ? this.props.classes.dayContainer : null}>
+            <div key="day" id="dropdown-day" className={(this.props.classes && this.props.classes.dayContainer) ? this.props.classes.dayContainer : null}>
                 <select
                     id={(this.props.ids && this.props.ids.day) ? this.props.ids.day : null}
                     name={(this.props.names && this.props.names.day) ? this.props.names.day : null}
