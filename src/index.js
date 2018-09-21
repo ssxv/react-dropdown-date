@@ -45,6 +45,7 @@ export class YearPicker extends React.Component {
                 className={this.props.classes ? this.props.classes : null}
                 name={this.props.name ? this.props.name : null}
                 required={this.props.required === true}
+                disabled={this.props.disabled === true}
                 onChange={(e) => this.props.onChange(e.target.value)}
                 value={this.props.value}
             >{this.renderYearOptions()}
@@ -68,15 +69,17 @@ export class MonthPicker extends React.Component {
                 month = today.getMonth();
             }
         }
-        for (let i = 0; i <= month; ++i) { months.push(monthByNumber[i]); }
-
-        if (this.props.caps) {
-            months = months.map((month) => { return month.toUpperCase(); });
+        if (this.props.numeric) {
+            for (let i = 0; i <= month; ++i) { months.push((i + 1).toString()); }
+        } else {
+            for (let i = 0; i <= month; ++i) { months.push(monthByNumber[i]); }
+            if (this.props.caps) {
+                months = months.map((month) => { return month.toUpperCase(); });
+            }
+            if (this.props.short) {
+                months = months.map((month) => { return month.substring(0, 3); });
+            }    
         }
-        if (this.props.short) {
-            months = months.map((month) => { return month.substring(0, 3); });
-        }
-
         const monthOptions = [];
         monthOptions.push(
             <option value="" key={-1}
@@ -102,6 +105,7 @@ export class MonthPicker extends React.Component {
                 className={this.props.classes ? this.props.classes : null}
                 name={this.props.name ? this.props.name : null}
                 required={this.props.required === true}
+                disabled={this.props.disabled === true}
                 onChange={(e) => this.props.onChange(e.target.value)}
                 value={this.props.value}
             >{this.renderMonthOptions()}
@@ -161,6 +165,7 @@ export class DayPicker extends React.Component {
                 name={this.props.name ? this.props.name : null}
                 onChange={(e) => this.props.onChange(e.target.value)}
                 required={this.props.required === true}
+                disabled={this.props.disabled === true}
                 value={this.props.value}
             >{this.renderDayOptions()}
             </select>

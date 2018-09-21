@@ -127,6 +127,8 @@ class App extends Component {
 					reverse
 					// default is false
 					required={true}
+					// default is false
+					disabled={true}
 					// mandatory
 					value={this.state.year}
 					// mandatory
@@ -141,6 +143,8 @@ class App extends Component {
 				/>
 				<MonthPicker
 					defaultValue={'select month'}
+					// to get months as numbers
+					numeric
 					// default is full name
 					short
 					// default is Titlecase
@@ -151,6 +155,8 @@ class App extends Component {
 					year={this.state.year}
 					// default is false
 					required={true}
+					// default is false
+					disabled={true}
 					// mandatory
 					value={this.state.month}
 					// mandatory
@@ -173,6 +179,8 @@ class App extends Component {
 					endYearGiven
 					// default is false
 					required={true}
+					// default is false
+					disabled={true}
 					// mandatory
 					value={this.state.day}
 					// mandatory
