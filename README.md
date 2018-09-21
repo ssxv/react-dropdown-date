@@ -82,7 +82,7 @@ import DropdownDate from 'react-dropdown-date';
 
    <!-- monthContainer -->
    <div class="classes">
-      
+
       <!-- month -->
       <select class="classes classes">
          <option value="" class="classes">select month</option>
@@ -125,9 +125,11 @@ class App extends Component {
 					end={2020}
 					// default is ASCENDING
 					reverse
+					// default is false
+					required={true}
 					// mandatory
-          value={this.state.year}
-          // mandatory
+					value={this.state.year}
+					// mandatory
 					onChange={(year) => {
 						this.setState({ year });
 						console.log(year);
@@ -147,9 +149,11 @@ class App extends Component {
 					endYearGiven
 					// mandatory
 					year={this.state.year}
+					// default is false
+					required={true}
 					// mandatory
-          value={this.state.month}
-          // mandatory
+					value={this.state.month}
+					// mandatory
 					onChange={(month) => {
 						this.setState({ month });
 						console.log(month);
@@ -167,9 +171,11 @@ class App extends Component {
 					month={this.state.month}
 					// mandatory if end={} is given in YearPicker
 					endYearGiven
+					// default is false
+					required={true}
 					// mandatory
-          value={this.state.day}
-          // mandatory
+					value={this.state.day}
+					// mandatory
 					onChange={(day) => {
 						this.setState({ day });
 						console.log(day);

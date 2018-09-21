@@ -44,6 +44,7 @@ export class YearPicker extends React.Component {
                 id={this.props.id ? this.props.id : null}
                 className={this.props.classes ? this.props.classes : null}
                 name={this.props.name ? this.props.name : null}
+                required={this.props.required === true}
                 onChange={(e) => this.props.onChange(e.target.value)}
                 value={this.props.value}
             >{this.renderYearOptions()}
@@ -100,6 +101,7 @@ export class MonthPicker extends React.Component {
                 id={this.props.id ? this.props.id : null}
                 className={this.props.classes ? this.props.classes : null}
                 name={this.props.name ? this.props.name : null}
+                required={this.props.required === true}
                 onChange={(e) => this.props.onChange(e.target.value)}
                 value={this.props.value}
             >{this.renderMonthOptions()}
@@ -158,6 +160,7 @@ export class DayPicker extends React.Component {
                 className={this.props.classes ? this.props.classes : null}
                 name={this.props.name ? this.props.name : null}
                 onChange={(e) => this.props.onChange(e.target.value)}
+                required={this.props.required === true}
                 value={this.props.value}
             >{this.renderDayOptions()}
             </select>
