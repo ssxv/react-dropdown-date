@@ -1,7 +1,8 @@
 {
     "name": "react-dropdown-date",
-    "version": "0.0.15",
+    "version": "0.0.16",
     "description": "Highly customizable react based date picker. Select date from Day, Month and Year dropdown",
+    "license": "MIT",
     "keywords": [
         "react-dropdown-date",
         "dropdown-date",
