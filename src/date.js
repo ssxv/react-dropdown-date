@@ -26,7 +26,7 @@ export class DropdownDate extends React.Component {
     }
 
     componentWillMount() {
-        let startYear, startMonth, startDay, endYear, endMonth, endDay;
+        let startYear, startMonth, startDay, endYear, endMonth, endDay, selectedYear, selectedMonth, selectedDay;
         if (this.props.startDate) {
             const date = new Date(this.props.startDate);
             startYear = date.getFullYear();
@@ -48,7 +48,27 @@ export class DropdownDate extends React.Component {
             endMonth = date.getMonth();
             endDay = date.getDate();
         }
-        this.setState({ startYear, startMonth, startDay, endYear, endMonth, endDay });
+        if (this.props.selectedDate) {
+            const date = new Date(this.props.selectedDate);
+            selectedYear = date.getFullYear();
+            selectedMonth = date.getMonth();
+            selectedDay = date.getDate();
+        } else {
+            selectedYear = -1;
+            selectedMonth = -1;
+            selectedDay = -1;
+        }
+        this.setState({ startYear, startMonth, startDay, endYear, endMonth, endDay, selectedYear, selectedMonth, selectedDay });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.selectedDate !== this.props.selectedDate) {
+            const date = new Date(nextProps.selectedDate);
+            let selectedYear = date.getFullYear();
+            let selectedMonth = date.getMonth();
+            let selectedDay = date.getDate();
+            this.setState({ selectedYear, selectedMonth, selectedDay });
+        }
     }
 
     generateYearOptions() {
