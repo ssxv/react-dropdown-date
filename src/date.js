@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { monthByNumber, numberByMonth, daysInMonth, unit } from './helper';
 
 
@@ -23,6 +24,14 @@ export class DropdownDate extends React.Component {
         this.handleMonthChange = this.handleMonthChange.bind(this);
         this.handleDayChange = this.handleDayChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
+        this.renderYear = this.renderYear.bind(this);
+        this.renderMonth = this.renderMonth.bind(this);
+        this.renderDay = this.renderDay.bind(this);
+        this.renderParts = {
+            year: this.renderYear,
+            month: this.renderMonth,
+            day: this.renderDay,
+        }
     }
 
     componentWillMount() {
@@ -274,43 +283,69 @@ export class DropdownDate extends React.Component {
         }
     }
 
+    renderYear() {
+        return (
+            <div key="year" id="dropdown-year" className={(this.props.classes && this.props.classes.yearContainer) ? this.props.classes.yearContainer : null}>
+                <select
+                    id={(this.props.ids && this.props.ids.year) ? this.props.ids.year : null}
+                    name={(this.props.names && this.props.names.year) ? this.props.names.year : null}
+                    className={(this.props.classes && this.props.classes.year) ? this.props.classes.year : null}
+                    onChange={(e) => this.handleYearChange(e.target.value)}
+                    value={this.state.selectedYear}
+                >
+                    {this.generateYearOptions()}
+                </select>
+            </div>
+        )
+    }
+
+    renderMonth() {
+        return (
+            <div key="month" id="dropdown-month" className={(this.props.classes && this.props.classes.monthContainer) ? this.props.classes.monthContainer : null}>
+                <select
+                    id={(this.props.ids && this.props.ids.month) ? this.props.ids.month : null}
+                    name={(this.props.names && this.props.names.month) ? this.props.names.month : null}
+                    className={(this.props.classes && this.props.classes.month) ? this.props.classes.month : null}
+                    onChange={(e) => this.handleMonthChange(e.target.value)}
+                    value={this.state.selectedMonth}
+                >
+                    {this.generateMonthOptions()}
+                </select>
+            </div>
+        )
+    }
+
+    renderDay() {
+        return (
+            <div key="day" id="dropdown-day" className={(this.props.classes && this.props.classes.dayContainer) ? this.props.classes.dayContainer : null}>
+                <select
+                    id={(this.props.ids && this.props.ids.day) ? this.props.ids.day : null}
+                    name={(this.props.names && this.props.names.day) ? this.props.names.day : null}
+                    className={(this.props.classes && this.props.classes.day) ? this.props.classes.day : null}
+                    onChange={(e) => this.handleDayChange(e.target.value)}
+                    value={this.state.selectedDay}
+                >
+                    {this.generateDayOptions()}
+                </select>
+            </div>
+        )
+    }
+
     render() {
         return (
             <div id="dropdown-date" className={(this.props.classes && this.props.classes.dateContainer) ? this.props.classes.dateContainer : null}>
-                <div id="dropdown-year" className={(this.props.classes && this.props.classes.yearContainer) ? this.props.classes.yearContainer : null}>
-                    <select
-                        id={(this.props.ids && this.props.ids.year) ? this.props.ids.year : null}
-                        name={(this.props.names && this.props.names.year) ? this.props.names.year : null}
-                        className={(this.props.classes && this.props.classes.year) ? this.props.classes.year : null}
-                        onChange={(e) => this.handleYearChange(e.target.value)}
-                        value={this.state.selectedYear}
-                    >
-                        {this.generateYearOptions()}
-                    </select>
-                </div>
-                <div id="dropdown-month" className={(this.props.classes && this.props.classes.monthContainer) ? this.props.classes.monthContainer : null}>
-                    <select
-                        id={(this.props.ids && this.props.ids.month) ? this.props.ids.month : null}
-                        name={(this.props.names && this.props.names.month) ? this.props.names.month : null}
-                        className={(this.props.classes && this.props.classes.month) ? this.props.classes.month : null}
-                        onChange={(e) => this.handleMonthChange(e.target.value)}
-                        value={this.state.selectedMonth}
-                    >
-                        {this.generateMonthOptions()}
-                    </select>
-                </div>
-                <div id="dropdown-day" className={(this.props.classes && this.props.classes.dayContainer) ? this.props.classes.dayContainer : null}>
-                    <select
-                        id={(this.props.ids && this.props.ids.day) ? this.props.ids.day : null}
-                        name={(this.props.names && this.props.names.day) ? this.props.names.day : null}
-                        className={(this.props.classes && this.props.classes.day) ? this.props.classes.day : null}
-                        onChange={(e) => this.handleDayChange(e.target.value)}
-                        value={this.state.selectedDay}
-                    >
-                        {this.generateDayOptions()}
-                    </select>
-                </div>
+                {this.props.order.map(part => {
+                    return this.renderParts[part]()
+                })}
             </div>
         );
     }
+}
+
+DropdownDate.propTypes = {
+    order: PropTypes.array
+}
+
+DropdownDate.defaultProps = {
+    order: ['year', 'month', 'day']
 }
