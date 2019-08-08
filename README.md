@@ -44,6 +44,9 @@ class App extends Component {
                     selectedDate={                      // optional
                         this.state.selectedDate         // 'yyyy-mm-dd' format only
                     }
+                    order={                             // optional
+                        ['year', 'month', 'day']        // Order of the dropdowns
+                    }
                     onMonthChange={(month) => {         // optional
                         console.log(month);
                     }}

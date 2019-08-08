@@ -19,9 +19,11 @@
     },
     "author": "Satyendra Singh <satyendra1529singh@gmail.com>",
     "peerDependencies": {
+        "prop-types": "^15.6.1",
         "react": "^16.3.1"
     },
     "dependencies": {
+        "prop-types": "^15.6.1",
         "react": "^16.3.1"
     },
     "scripts": {

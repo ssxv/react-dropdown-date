@@ -23,6 +23,12 @@ module.exports = {
         ]
     },
     externals: {
-        'react': 'commonjs react' // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
+        'react': 'commonjs react', // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
+        'prop-types': {
+            root: 'PropTypes',
+            commonjs2: 'prop-types',
+            commonjs: 'prop-types',
+            amd: 'prop-types'
+        }
     }
 };
