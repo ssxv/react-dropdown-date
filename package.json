@@ -1,6 +1,6 @@
 {
     "name": "react-dropdown-date",
-    "version": "0.0.18",
+    "version": "2.0.0",
     "description": "Highly customizable react based date picker. Select date from Day, Month and Year dropdown",
     "license": "MIT",
     "keywords": [
@@ -12,34 +12,35 @@
         "react",
         "react-date"
     ],
-    "main": "build/index.js",
+    "main": "dist/index.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/ssxv/react-dropdown-date.git"
     },
     "author": "Satyendra Singh <satyendra1529singh@gmail.com>",
     "peerDependencies": {
-        "prop-types": "^15.6.1",
-        "react": "^16.3.1"
+        "react": "^16.8.0",
+        "react-dom": "^16.8.0"
     },
-    "dependencies": {
-        "prop-types": "^15.6.1",
-        "react": "^16.3.1"
+    "devDependencies": {
+        "@types/react": "^16.9.49",
+        "@types/react-dom": "^16.9.8",
+        "babel-core": "^6.26.3",
+        "babel-runtime": "^6.26.0",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "rollup": "^2.28.2",
+        "rollup-plugin-typescript2": "^0.27.2",
+        "typescript": "^4.0.3"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack --watch",
-        "build": "webpack"
+        "build": "rollup -c",
+        "start": "rollup -c -w"
     },
-    "devDependencies": {
-        "babel-cli": "^6.24.1",
-        "babel-core": "^6.24.1",
-        "babel-loader": "^7.0.0",
-        "babel-plugin-transform-object-rest-spread": "^6.23.0",
-        "babel-plugin-transform-react-jsx": "^6.24.1",
-        "babel-preset-env": "^1.5.1",
-        "webpack": "^2.6.1"
-    },
+    "files": [
+        "dist"
+    ],
     "bugs": {
         "url": "https://github.com/ssxv/react-dropdown-date/issues"
     },

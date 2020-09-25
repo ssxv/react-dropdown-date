@@ -10,7 +10,7 @@ https://www.npmjs.com/package/react-dropdown-date
 see further below for individual components
 ```
 import React, { Component } from 'react';
-import DropdownDate from 'react-dropdown-date';
+import { DropdownDate } from 'react-dropdown-date';
 
 const formatDate = (date) => {	// formats a JS date to 'yyyy-mm-dd'
     var d = new Date(date),
