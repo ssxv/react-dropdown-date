@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { monthByNumber, daysInMonth } from './helper';
 
-export const enum DropdownComponent {
+export enum DropdownComponent {
     year = 'year',
     month = 'month',
     day = 'day',
