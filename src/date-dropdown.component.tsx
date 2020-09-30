@@ -68,16 +68,20 @@ export class DropdownDate extends React.Component<IProps, IState> {
 
     constructor(props: IProps) {
         super(props);
+        const { startDate, endDate, selectedDate } = props;
+        const sDate = startDate ? new Date(startDate) : new Date('1900-01-01');
+        const eDate = endDate ? new Date(endDate) : new Date();
+        const selDate = selectedDate ? new Date(selectedDate) : null;
         this.state = {
-            startYear: 1900,
-            startMonth: 0,
-            startDay: 1,
-            endYear: new Date().getFullYear(),
-            endMonth: new Date().getMonth(),
-            endDay: new Date().getDate(),
-            selectedYear: -1,
-            selectedMonth: -1,
-            selectedDay: -1
+            startYear: sDate.getFullYear(),
+            startMonth: sDate.getMonth(),
+            startDay: sDate.getDate(),
+            endYear: eDate.getFullYear(),
+            endMonth: eDate.getMonth(),
+            endDay: eDate.getDate(),
+            selectedYear: selDate ? selDate.getFullYear() : -1,
+            selectedMonth: selDate ? selDate.getMonth() : -1,
+            selectedDay: selDate ? selDate.getDate() : -1
         };
         this.renderParts = {
             year: this.renderYear,
@@ -86,51 +90,23 @@ export class DropdownDate extends React.Component<IProps, IState> {
         }
     }
 
-    componentWillMount() {
-        let startYear, startMonth, startDay, endYear, endMonth, endDay, selectedYear, selectedMonth, selectedDay;
-        const { startDate, endDate, selectedDate } = this.props;
-        if (startDate) {
-            const date = new Date(startDate);
-            startYear = date.getFullYear();
-            startMonth = date.getMonth();
-            startDay = date.getDate();
-        } else {
-            startYear = 1900;
-            startMonth = 0;
-            startDay = 1;
+    static getDerivedStateFromProps(nextProps: IProps, prevState: IState) {
+        const selDate = nextProps.selectedDate ? new Date(nextProps.selectedDate) : null;
+        const tempSelDate = {
+            selectedYear: selDate ? selDate.getFullYear() : -1,
+            selectedMonth: selDate ? selDate.getMonth() : -1,
+            selectedDay: selDate ? selDate.getDate() : -1
+        };
+        if (tempSelDate.selectedYear !== prevState.selectedYear) {
+            return { selectedYear: tempSelDate.selectedYear };
         }
-        if (endDate) {
-            const date = new Date(endDate);
-            endYear = date.getFullYear();
-            endMonth = date.getMonth();
-            endDay = date.getDate();
-        } else {
-            const date = new Date();
-            endYear = date.getFullYear();
-            endMonth = date.getMonth();
-            endDay = date.getDate();
+        if (tempSelDate.selectedMonth !== prevState.selectedMonth) {
+            return { selectedMonth: tempSelDate.selectedMonth };
         }
-        if (selectedDate) {
-            const date = new Date(selectedDate);
-            selectedYear = date.getFullYear();
-            selectedMonth = date.getMonth();
-            selectedDay = date.getDate();
-        } else {
-            selectedYear = -1;
-            selectedMonth = -1;
-            selectedDay = -1;
+        if (tempSelDate.selectedDay !== prevState.selectedDay) {
+            return { selectedDay: tempSelDate.selectedDay };
         }
-        this.setState({ startYear, startMonth, startDay, endYear, endMonth, endDay, selectedYear, selectedMonth, selectedDay });
-    }
-
-    componentWillReceiveProps(nextProps: IProps) {
-        if (nextProps.selectedDate && nextProps.selectedDate !== this.props.selectedDate) {
-            const date = new Date(nextProps.selectedDate);
-            let selectedYear = date.getFullYear();
-            let selectedMonth = date.getMonth();
-            let selectedDay = date.getDate();
-            this.setState({ selectedYear, selectedMonth, selectedDay });
-        }
+        return null;
     }
 
     generateYearOptions() {
