@@ -16,6 +16,7 @@ interface IProps {
     onDayChange?: Function;
     onYearChange?: Function;
     onDateChange?: Function;
+    localizedMonths: Object;
     ids?: {
         year?: string;
         month?: string;
@@ -143,28 +144,30 @@ export class DropdownDate extends React.Component<IProps, IState> {
     }
 
     generateMonthOptions() {
-        const { classes, options, defaultValues } = this.props;
+        const { classes, options, defaultValues, localizedMonths } = this.props;
         const { startMonth, endMonth, startYear, endYear, selectedYear } = this.state;
+        let localizedMonthOptions = (Object.entries(localizedMonths).length === 0) ? monthByNumber : localizedMonths;
+
         let months = [];
         if (selectedYear === startYear) {
             for (let i = startMonth; i <= 11; i++) {
                 months.push({
                     value: i,
-                    month: monthByNumber[i]
+                    month: localizedMonthOptions[i]
                 });
             }
         } else if (selectedYear === endYear) {
             for (let i = 0; i <= endMonth; i++) {
                 months.push({
                     value: i,
-                    month: monthByNumber[i]
+                    month: localizedMonthOptions[i]
                 });
             }
         } else {
             for (let i = 0; i <= 11; i++) {
                 months.push({
                     value: i,
-                    month: monthByNumber[i]
+                    month: localizedMonthOptions[i]
                 });
             }
         }
