@@ -16,7 +16,7 @@ interface IProps {
     name?: string;
     classes?: string;
     optionClasses?: string;
-    localizedMonths: Object;
+    localizedMonths?: Object;
 }
 
 interface IState {
@@ -30,7 +30,7 @@ export class MonthPicker extends React.Component<IProps, IState> {
         const today = new Date();
         let months = [];
         let month = 11;
-        let localizedMonthOptions = (Object.entries(localizedMonths).length === 0) ? monthByNumber : localizedMonths;
+        let localizedMonthOptions = (localizedMonths && Object.entries(localizedMonths).length > 0) ? localizedMonths : monthByNumber;
         if (!endYearGiven) {
             if (year && parseInt(year.toString()) === today.getFullYear()) {
                 month = today.getMonth();
