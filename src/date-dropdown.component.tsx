@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { monthByNumber, daysInMonth } from './helper';
+import { monthByNumber, getDaysInMonth } from './helper';
 
 export enum DropdownComponent {
     year = 'year',
@@ -146,7 +146,15 @@ export class DropdownDate extends React.Component<IProps, IState> {
         const { classes, options, defaultValues } = this.props;
         const { startMonth, endMonth, startYear, endYear, selectedYear } = this.state;
         let months = [];
-        if (selectedYear === startYear) {
+
+        if (selectedYear === startYear && selectedYear === endYear) {
+            for (let i = startMonth; i <= endMonth; i++) {
+                months.push({
+                    value: i,
+                    month: monthByNumber[i]
+                });
+            }
+        } else if (selectedYear === startYear) {
             for (let i = startMonth; i <= 11; i++) {
                 months.push({
                     value: i,
@@ -217,10 +225,43 @@ export class DropdownDate extends React.Component<IProps, IState> {
             </option>
         );
 
-        let monthDays;
-        if (selectedYear === startYear) {
+        const monthDays = getDaysInMonth(selectedYear, selectedMonth);
+        if (selectedYear === startYear && selectedYear === endYear) {
+            if (selectedMonth === startMonth && selectedMonth === endMonth) {
+                for (let i = startDay; i <= endDay; i++) {
+                    dayOptions.push(
+                        <option key={i} value={i}
+                            className={(classes && classes.dayOptions) ? classes.dayOptions : undefined}
+                        >{i}</option>
+                    );
+                }
+            } else if (selectedMonth === startMonth) {
+                for (let i = startDay; i <= monthDays; i++) {
+                    dayOptions.push(
+                        <option key={i} value={i}
+                            className={(classes && classes.dayOptions) ? classes.dayOptions : undefined}
+                        >{i}</option>
+                    );
+                }
+            } else if (selectedMonth === endMonth) {
+                for (let i = 1; i <= endDay; i++) {
+                    dayOptions.push(
+                        <option key={i} value={i}
+                            className={(classes && classes.dayOptions) ? classes.dayOptions : undefined}
+                        >{i}</option>
+                    );
+                }
+            } else {
+                for (let i = 1; i <= monthDays; i++) {
+                    dayOptions.push(
+                        <option key={i} value={i}
+                            className={(classes && classes.dayOptions) ? classes.dayOptions : undefined}
+                        >{i}</option>
+                    );
+                }
+            }
+        } else if (selectedYear === startYear) {
             if (selectedMonth === startMonth) {
-                monthDays = (selectedYear % 4 === 0 && selectedMonth === 1) ? daysInMonth[selectedMonth] + 1 : daysInMonth[selectedMonth];
                 for (let i = startDay; i <= monthDays; i++) {
                     dayOptions.push(
                         <option key={i} value={i}
@@ -229,7 +270,6 @@ export class DropdownDate extends React.Component<IProps, IState> {
                     );
                 }
             } else {
-                monthDays = (selectedYear % 4 === 0 && selectedMonth === 1) ? daysInMonth[selectedMonth] + 1 : daysInMonth[selectedMonth];
                 for (let i = 1; i <= monthDays; i++) {
                     dayOptions.push(
                         <option key={i} value={i}
@@ -248,7 +288,6 @@ export class DropdownDate extends React.Component<IProps, IState> {
                     );
                 }
             } else {
-                monthDays = (selectedYear % 4 === 0 && selectedMonth === 1) ? daysInMonth[selectedMonth] + 1 : daysInMonth[selectedMonth];
                 for (let i = 1; i <= monthDays; i++) {
                     dayOptions.push(
                         <option key={i} value={i}
@@ -259,7 +298,6 @@ export class DropdownDate extends React.Component<IProps, IState> {
             }
         } else {
             if (selectedMonth) {
-                monthDays = (selectedYear % 4 === 0 && selectedMonth === 1) ? daysInMonth[selectedMonth] + 1 : daysInMonth[selectedMonth];
                 for (let i = 1; i <= monthDays; i++) {
                     dayOptions.push(
                         <option key={i} value={i}

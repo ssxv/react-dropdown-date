@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { daysInMonth } from './helper';
+import { getDaysInMonth } from './helper';
 
 interface IProps {
     year: number;
@@ -25,16 +25,8 @@ export class DayPicker extends React.Component<IProps, IState> {
     renderDayOptions = () => {
         const { month, year, endYearGiven, optionClasses, defaultValue } = this.props;
 
-        let days;
-        if (month) {
-            if (year && year % 4 === 0 && month === 1) {
-                days = 29;
-            } else {
-                days = daysInMonth[month];
-            }
-        } else {
-            days = 31;
-        }
+        let days = month ? getDaysInMonth(year, month) : 31;
+
         const today = new Date();
         if (!endYearGiven) {
             if (year === today.getFullYear() && month === today.getMonth()) {
