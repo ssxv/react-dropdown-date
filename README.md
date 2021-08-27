@@ -6,6 +6,10 @@ Highly customizable react based date picker. Select date from Day, Month and Yea
 
 https://www.npmjs.com/package/react-dropdown-date
 
+## [Demo Link](https://codesandbox.io/s/react-dropdown-date-demo-gbm2k)
+https://codesandbox.io/s/react-dropdown-date-demo-gbm2k
+
+
 ## `Date` component, with combined functionality
 see further below for individual components
 ```
