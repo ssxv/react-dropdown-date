@@ -66,6 +66,20 @@ class App extends Component {
             console.log(date);
             this.setState({ date: date, selectedDate: formatDate(date) });
           }}
+          localizedMonths={                 // default is the english options
+            0: 'January',
+            1: 'February',
+            2: 'March',
+            3: 'April',
+            4: 'May',
+            5: 'June',
+            6: 'July',
+            7: 'August',
+            8: 'September',
+            9: 'October',
+            10: 'November',
+            11: 'December'
+          }
           ids={                             // optional
             {
               year: 'select-year',
@@ -198,6 +212,20 @@ class App extends Component {
             this.setState({ month });
             console.log(month);
           }}
+          localizedMonths={         // default is the english options
+            0: 'January',
+            1: 'February',
+            2: 'March',
+            3: 'April',
+            4: 'May',
+            5: 'June',
+            6: 'July',
+            7: 'August',
+            8: 'September',
+            9: 'October',
+            10: 'November',
+            11: 'December'
+          }
           id={'month'}
           name={'month'}
           classes={'classes'}
