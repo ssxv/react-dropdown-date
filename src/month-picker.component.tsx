@@ -27,7 +27,8 @@ export class MonthPicker extends React.Component<IProps, IState> {
     renderMonthOptions = () => {
         const { endYearGiven, year, numeric, caps, short, optionClasses, defaultValue } = this.props;
         const today = new Date();
-        let months = [];
+        let months: string[] = [];
+
         let month = 11;
         if (!endYearGiven) {
             if (year && parseInt(year.toString()) === today.getFullYear()) {
