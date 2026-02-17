@@ -20,8 +20,8 @@
     },
     "author": "Satyendra Singh <satyendra1529singh@gmail.com>",
     "peerDependencies": {
-        "react": "^16.8.0",
-        "react-dom": "^16.8.0"
+        "react": ">=16",
+        "react-dom": ">=16"
     },
     "devDependencies": {
         "@types/react": "^16.9.49",
