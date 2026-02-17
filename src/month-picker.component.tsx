@@ -16,6 +16,7 @@ interface IProps {
     name?: string;
     classes?: string;
     optionClasses?: string;
+    localizedMonths?: Object;
 }
 
 interface IState {
@@ -25,10 +26,11 @@ interface IState {
 export class MonthPicker extends React.Component<IProps, IState> {
 
     renderMonthOptions = () => {
-        const { endYearGiven, year, numeric, caps, short, optionClasses, defaultValue } = this.props;
+        const { endYearGiven, year, numeric, caps, short, optionClasses, defaultValue, localizedMonths } = this.props;
         const today = new Date();
         let months = [];
         let month = 11;
+        let localizedMonthOptions = (localizedMonths && Object.entries(localizedMonths).length > 0) ? localizedMonths : monthByNumber;
         if (!endYearGiven) {
             if (year && parseInt(year.toString()) === today.getFullYear()) {
                 month = today.getMonth();
@@ -40,7 +42,7 @@ export class MonthPicker extends React.Component<IProps, IState> {
             }
         } else {
             for (let i = 0; i <= month; ++i) {
-                months.push(monthByNumber[i]);
+                months.push(localizedMonthOptions[i]);
             }
             if (caps) {
                 months = months.map((month) => { return month.toUpperCase(); });
