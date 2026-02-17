@@ -1,6 +1,6 @@
-import typescript from 'rollup-plugin-typescript2'
+import typescript from 'rollup-plugin-typescript2';
 
-import pkg from './package.json'
+import pkg from './package.json';
 
 export default {
     input: 'src/index.tsx',
@@ -11,10 +11,15 @@ export default {
             exports: 'named',
             sourcemap: true,
             strict: false
+        },
+        {
+            file: 'dist/index.esm.js',
+            format: 'esm',
+            exports: 'named',
+            sourcemap: true,
+            strict: false
         }
     ],
-    plugins: [
-        typescript()
-    ],
+    plugins: [typescript()],
     external: ['react', 'react-dom']
-}
+};
