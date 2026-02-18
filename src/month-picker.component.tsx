@@ -16,7 +16,7 @@ interface IProps {
     name?: string;
     classes?: string;
     optionClasses?: string;
-    localizedMonths?: Object;
+    localizedMonths?: { [key: number]: string };
 }
 
 interface IState {
@@ -42,7 +42,7 @@ export class MonthPicker extends React.Component<IProps, IState> {
             }
         } else {
             for (let i = 0; i <= month; ++i) {
-                months.push(localizedMonthOptions[i]);
+                months.push((localizedMonthOptions as { [key: number]: string })[i]);
             }
             if (caps) {
                 months = months.map((month) => { return month.toUpperCase(); });
